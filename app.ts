@@ -5,10 +5,11 @@ import hpp from "hpp";
 import helmet, { type HelmetOptions } from "helmet";
 import { xss } from "express-xss-sanitizer";
 import cookieParser from "cookie-parser";
-import {rateLimit} from "express-rate-limit"; // Corrected import
 import { setupSwagger } from "./src/docs/swagger.js";
-import { globalErrorHandler, notFoundMiddleware } from "./src/middlewares/error.middleware.js";
+import rateLimit from "express-rate-limit";
 import { mountRoutes } from "./src/routes/index.js";
+import { globalErrorHandler, notFoundMiddleware } from "./src/middlewares/error.middleware.js";
+ 
 
 interface HealthResponse {
   code: number;

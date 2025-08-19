@@ -11,7 +11,7 @@ const PORT: number = parseInt(process.env.PORT || "5000", 10);
         await connectDB();
 
         const server: Server = app.listen(PORT, () => {
-            console.log(chalk.blue.bold(`🚀 Server started on port ${PORT}`));
+            console.log(chalk.blue.bold(`🚀 Server running on port: http://localhost:${PORT}`));
         });
 
         // Graceful shutdown

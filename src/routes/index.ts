@@ -1,8 +1,6 @@
 import { Router, type Application } from "express";
 import { userRoutes } from "./user.route.js";
-import { adminRoutes } from "./admin.route.js";
-import { productRoutes } from "./product.route.js";
-
+ 
 const router = Router();
  
 router.get("/", (req, res) => {
@@ -11,8 +9,6 @@ router.get("/", (req, res) => {
  
 const routes = [
     { path: "/users", route: userRoutes },
-    { path: "/admin", route: adminRoutes },
-    { path: "/products", route: productRoutes },
 ];
 
 routes.forEach((route) => {
