@@ -2,7 +2,7 @@ import type { Request, Response, NextFunction } from "express";
 import catchAsync from "../utils/catch.async.js";
 import ApiError from "../utils/api.error.js";
 import jwt from "jsonwebtoken";
-import User from "../schemas/opeartion/user.schema.js";
+import User from "../schemas/user.schema.js";
 
 // User interface that matches your database model
 interface UserDocument {

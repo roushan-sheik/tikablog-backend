@@ -1,8 +1,11 @@
+/* eslint-disable no-console */
 import mongoose from "mongoose";
 import chalk from "chalk";
+import config from "../config/index.js";
+
 
 const connectDB = async (): Promise<void> => {
-  const MONGO_URI: string | undefined = process.env.MONGO_URI;
+  const MONGO_URI: string | undefined = config.MONGO_URI
   if (!MONGO_URI) {
     throw new Error(
       chalk.red.bold("❗ MONGO_URI is not defined in environment variables.")
@@ -40,6 +43,7 @@ const connectDB = async (): Promise<void> => {
       );
       setTimeout(connectDB, 5000);
     });
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (error: any) {
     console.error(
       chalk.red.bold(`🚨 MongoDB Connection Failed: ${error.message}`)

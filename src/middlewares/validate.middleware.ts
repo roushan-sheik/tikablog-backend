@@ -4,9 +4,9 @@ import ApiError from "../utils/api.error.js";
 
 export const validateRequest =
   (schema: ZodType) =>
-  (req: Request, res: Response, next: NextFunction): void => {
+  async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
-      schema.parseAsync({ body: req.body });
+      await schema.parseAsync({ body: req.body });
       next();
     } catch (error) {
       if (error instanceof ZodError) {

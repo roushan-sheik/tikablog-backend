@@ -93,15 +93,18 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 // Routes
-app.get("/health", (req: Request, res: Response<HealthResponse>) => {
-  res
-    .status(200)
-    .json({ code: 200, success: true, message: "Server is running" });
+app.get("/health", (req: Request, res: Response) => {
+  res.status(200).json({
+    success: true,
+    message: "Server is healthy",
+    uptime: process.uptime(),
+    timestamp: new Date().toISOString(),
+  });
 });
 app.get("/", (req: Request, res: Response<HealthResponse>) => {
   res
     .status(200)
-    .json({ code: 200, success: true, message: "Welcome to Dasvilson Server" });
+    .json({ code: 200, success: true, message: "Welcome to Tikablog Server" });
 });
 mountRoutes(app);
 
