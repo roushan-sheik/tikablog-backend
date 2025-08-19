@@ -1,5 +1,4 @@
-
-## File and folder structure 
+## File and folder structure
 
 ```
 └─ .
@@ -38,4 +37,4 @@
    │     └─ success.response.ts
    └─ tsconfig.json
 
-   ```
+```

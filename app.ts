@@ -1,4 +1,8 @@
-import express, { type Application, type Request, type Response } from "express";
+import express, {
+  type Application,
+  type Request,
+  type Response,
+} from "express";
 import dotenv from "dotenv";
 import cors from "cors";
 import hpp from "hpp";
@@ -8,8 +12,10 @@ import cookieParser from "cookie-parser";
 import { setupSwagger } from "./src/docs/swagger.js";
 import rateLimit from "express-rate-limit";
 import { mountRoutes } from "./src/routes/index.js";
-import { globalErrorHandler, notFoundMiddleware } from "./src/middlewares/error.middleware.js";
- 
+import {
+  globalErrorHandler,
+  notFoundMiddleware,
+} from "./src/middlewares/error.middleware.js";
 
 interface HealthResponse {
   code: number;
@@ -61,7 +67,11 @@ if (!isProduction) {
   helmetOptions.crossOriginEmbedderPolicy = false;
 }
 if (isProduction) {
-  helmetOptions.hsts = { maxAge: 31536000, includeSubDomains: true, preload: true };
+  helmetOptions.hsts = {
+    maxAge: 31536000,
+    includeSubDomains: true,
+    preload: true,
+  };
 } else {
   helmetOptions.hsts = false;
 }
@@ -70,10 +80,10 @@ app.use(xss());
 
 // Create and apply the rate limiter
 const globalLimiter = rateLimit({
-	windowMs: 15 * 60 * 1000, // 15 minutes
-	max: 100, // Limit each IP to 100 requests per `window` (here, per 15 minutes)
-	standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
-	legacyHeaders: false, // Disable the `X-RateLimit-*` headers
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 100, // Limit each IP to 100 requests per `window` (here, per 15 minutes)
+  standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
+  legacyHeaders: false, // Disable the `X-RateLimit-*` headers
 });
 app.use(globalLimiter);
 
@@ -84,10 +94,14 @@ app.use(cookieParser());
 
 // Routes
 app.get("/health", (req: Request, res: Response<HealthResponse>) => {
-  res.status(200).json({ code: 200, success: true, message: "Server is running" });
+  res
+    .status(200)
+    .json({ code: 200, success: true, message: "Server is running" });
 });
 app.get("/", (req: Request, res: Response<HealthResponse>) => {
-  res.status(200).json({ code: 200, success: true, message: "Welcome to Dasvilson Server" });
+  res
+    .status(200)
+    .json({ code: 200, success: true, message: "Welcome to Dasvilson Server" });
 });
 mountRoutes(app);
 

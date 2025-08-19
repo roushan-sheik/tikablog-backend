@@ -1,6 +1,6 @@
 import swaggerJsdoc from "swagger-jsdoc";
 import swaggerUi from "swagger-ui-express";
-import type{ Application } from "express";
+import type { Application } from "express";
 
 const swaggerOptions: any = {
   definition: {
@@ -10,9 +10,7 @@ const swaggerOptions: any = {
       version: "1.0.0",
       description: "API documentation for Dasvilson Server",
     },
-    servers: [
-      { url: "http://localhost:8000" },
-    ],
+    servers: [{ url: "http://localhost:8000" }],
   },
   apis: ["./src/docs/*.ts"],
 };
